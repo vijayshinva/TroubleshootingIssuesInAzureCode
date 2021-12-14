@@ -1,0 +1,396 @@
+﻿@page
+@using System.Globalization
+@model AspNetOneRazor.Pages.ThreadModel
+@{
+    ViewData["Title"] = "Thread";
+}
+<div class="accordion" id="accordion">
+    <div class="accordion-item">
+        <h5 class="accordion-header" id="headingZero">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                Thread Information
+            </button>
+        </h5>
+        <div id="collapseZero" class="accordion-collapse collapse show" aria-labelledby="headingZero" data-bs-parent="#accordion">
+            <div class="accordion-body">
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        <tr>
+                            <th>ManagedThreadId</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.ManagedThreadId</td>
+                            <th>Name</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.Name</td>
+                        </tr>
+                        <tr>
+                            <th>IsBackground</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.IsBackground</td>
+                            <th>IsThreadPoolThread</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.IsThreadPoolThread</td>
+                        </tr>
+                        <tr>
+                            <th>IsAlive</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.IsAlive</td>
+                            <th>Priority</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.Priority</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h5 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                CurrentPrincipal
+            </button>
+        </h5>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+            <div class="accordion-body">
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        <tr>
+                            <th>IsAuthenticated</th>
+                            <td>@Thread.CurrentPrincipal?.Identity?.IsAuthenticated</td>
+                            <th>AuthenticationType</th>
+                            <td class="text-break text-wrap">@Thread.CurrentPrincipal?.Identity?.AuthenticationType</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td>@Thread.CurrentPrincipal?.Identity?.Name</td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h5 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                CultureInfo.CurrentCulture
+            </button>
+        </h5>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+            <div class="accordion-body">
+
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.Name</td>
+                            <th>NativeName</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.NativeName</td>
+                        </tr>
+                        <tr>
+                            <th>DisplayName</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.DisplayName</td>
+                            <th>EnglishName</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.EnglishName</td>
+                        </tr>
+                        <tr>
+                            <th>ThreeLetterISOLanguageName</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.ThreeLetterISOLanguageName</td>
+                            <th>ThreeLetterWindowsLanguageName</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.ThreeLetterWindowsLanguageName</td>
+                        </tr>
+                        <tr>
+                            <th>TwoLetterISOLanguageName</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TwoLetterISOLanguageName</td>
+                            <th>LCID</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.LCID</td>
+                        </tr>
+                        <tr>
+                            <th>DateSeparator</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.DateTimeFormat.DateSeparator</td>
+                            <th>FullDateTimePattern</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.DateTimeFormat.FullDateTimePattern</td>
+                        </tr>
+                        <tr>
+                            <th>AllDateTimePatterns</th>
+                            <td colspan="3" class="text-break text-wrap">@string.Join(",", CultureInfo.CurrentCulture.DateTimeFormat.GetAllDateTimePatterns())</td>
+                        </tr>
+                        <tr>
+                            <th>AbbreviatedMonthNames</th>
+                            <td class="text-break text-wrap">@string.Join(",", CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames)</td>
+                            <th>AbbreviatedDayNames</th>
+                            <td class="text-break text-wrap">@string.Join(",", CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedDayNames)</td>
+                        </tr>
+                        <tr>
+                            <th>CurrencySymbol</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol</td>
+                            <th>CurrencyDecimalDigits</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalDigits</td>
+                        </tr>
+                        <tr>
+                            <th>CurrencyGroupSeparator</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.NumberFormat.CurrencyGroupSeparator</td>
+                            <th>CurrencyGroupSizes</th>
+                            <td class="text-break text-wrap">@string.Join(",", CultureInfo.CurrentCulture.NumberFormat.CurrencyGroupSizes)</td>
+                        </tr>
+                        <tr>
+                            <th>NumberGroupSeparator</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator</td>
+                            <th>NumberGroupSizes</th>
+                            <td class="text-break text-wrap">@string.Join(",", CultureInfo.CurrentCulture.NumberFormat.NumberGroupSizes)</td>
+                        </tr>
+                        <tr>
+                            <th>IsNeutralCulture</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.IsNeutralCulture</td>
+                            <th>IetfLanguageTag</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.IetfLanguageTag</td>
+                        </tr>
+                        <tr>
+                            <th>CompareInfo Name</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.CompareInfo.Name</td>
+                            <th>CompareInfo Version</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.CompareInfo.Version.FullVersion</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo ANSICodePage</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TextInfo.ANSICodePage</td>
+                            <th>TextInfo EBCDICCodePage</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TextInfo.EBCDICCodePage</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo MacCodePage</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TextInfo.MacCodePage</td>
+                            <th>TextInfo OEMCodePage</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TextInfo.OEMCodePage</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo CultureName</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TextInfo.CultureName</td>
+                            <th>TextInfo IsRightToLeft</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TextInfo.IsRightToLeft</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo ListSeparator</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TextInfo.ListSeparator</td>
+                            <th>TextInfo LCID</th>
+                            <td class="text-break text-wrap">@CultureInfo.CurrentCulture.TextInfo.LCID</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h5 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Thread.CurrentThread.CurrentCulture
+            </button>
+        </h5>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+            <div class="accordion-body">
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.Name</td>
+                            <th>NativeName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.NativeName</td>
+                        </tr>
+                        <tr>
+                            <th>DisplayName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.DisplayName</td>
+                            <th>EnglishName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.EnglishName</td>
+                        </tr>
+                        <tr>
+                            <th>ThreeLetterISOLanguageName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.ThreeLetterISOLanguageName</td>
+                            <th>ThreeLetterWindowsLanguageName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.ThreeLetterWindowsLanguageName</td>
+                        </tr>
+                        <tr>
+                            <th>TwoLetterISOLanguageName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName</td>
+                            <th>LCID</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.LCID</td>
+                        </tr>
+                        <tr>
+                            <th>DateSeparator</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.DateTimeFormat.DateSeparator</td>
+                            <th>FullDateTimePattern</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.DateTimeFormat.FullDateTimePattern</td>
+                        </tr>
+                        <tr>
+                            <th>AllDateTimePatterns</th>
+                            <td colspan="3" class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentCulture.DateTimeFormat.GetAllDateTimePatterns())</td>
+                        </tr>
+                        <tr>
+                            <th>AbbreviatedMonthNames</th>
+                            <td class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentCulture.DateTimeFormat.AbbreviatedMonthNames)</td>
+                            <th>AbbreviatedDayNames</th>
+                            <td class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentCulture.DateTimeFormat.AbbreviatedDayNames)</td>
+                        </tr>
+                        <tr>
+                            <th>CurrencySymbol</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencySymbol</td>
+                            <th>CurrencyDecimalDigits</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalDigits</td>
+                        </tr>
+                        <tr>
+                            <th>CurrencyGroupSeparator</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator</td>
+                            <th>CurrencyGroupSizes</th>
+                            <td class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSizes)</td>
+                        </tr>
+                        <tr>
+                            <th>NumberGroupSeparator</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.NumberFormat.NumberGroupSeparator</td>
+                            <th>NumberGroupSizes</th>
+                            <td class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentCulture.NumberFormat.NumberGroupSizes)</td>
+                        </tr>
+                        <tr>
+                            <th>IsNeutralCulture</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.IsNeutralCulture</td>
+                            <th>IetfLanguageTag</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.IetfLanguageTag</td>
+                        </tr>
+                        <tr>
+                            <th>CompareInfo Name</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.CompareInfo.Name</td>
+                            <th>CompareInfo Version</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.CompareInfo.Version.FullVersion</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo ANSICodePage</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TextInfo.ANSICodePage</td>
+                            <th>TextInfo EBCDICCodePage</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TextInfo.EBCDICCodePage</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo MacCodePage</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TextInfo.MacCodePage</td>
+                            <th>TextInfo OEMCodePage</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TextInfo.OEMCodePage</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo CultureName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TextInfo.CultureName</td>
+                            <th>TextInfo IsRightToLeft</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo ListSeparator</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TextInfo.ListSeparator</td>
+                            <th>TextInfo LCID</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentCulture.TextInfo.LCID</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h5 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Thread.CurrentThread.CurrentUICulture
+            </button>
+        </h5>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
+            <div class="accordion-body">
+                <table class="table table-sm table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.Name</td>
+                            <th>NativeName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.NativeName</td>
+                        </tr>
+                        <tr>
+                            <th>DisplayName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.DisplayName</td>
+                            <th>EnglishName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.EnglishName</td>
+                        </tr>
+                        <tr>
+                            <th>ThreeLetterISOLanguageName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.ThreeLetterISOLanguageName</td>
+                            <th>ThreeLetterWindowsLanguageName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName</td>
+                        </tr>
+                        <tr>
+                            <th>TwoLetterISOLanguageName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName</td>
+                            <th>LCID</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.LCID</td>
+                        </tr>
+                        <tr>
+                            <th>DateSeparator</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.DateTimeFormat.DateSeparator</td>
+                            <th>FullDateTimePattern</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.DateTimeFormat.FullDateTimePattern</td>
+                        </tr>
+                        <tr>
+                            <th>AllDateTimePatterns</th>
+                            <td colspan="3" class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentUICulture.DateTimeFormat.GetAllDateTimePatterns())</td>
+                        </tr>
+                        <tr>
+                            <th>AbbreviatedMonthNames</th>
+                            <td class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentUICulture.DateTimeFormat.AbbreviatedMonthNames)</td>
+                            <th>AbbreviatedDayNames</th>
+                            <td class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentUICulture.DateTimeFormat.AbbreviatedDayNames)</td>
+                        </tr>
+                        <tr>
+                            <th>CurrencySymbol</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencySymbol</td>
+                            <th>CurrencyDecimalDigits</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencyDecimalDigits</td>
+                        </tr>
+                        <tr>
+                            <th>CurrencyGroupSeparator</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencyGroupSeparator</td>
+                            <th>CurrencyGroupSizes</th>
+                            <td class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentUICulture.NumberFormat.CurrencyGroupSizes)</td>
+                        </tr>
+                        <tr>
+                            <th>NumberGroupSeparator</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberGroupSeparator</td>
+                            <th>NumberGroupSizes</th>
+                            <td class="text-break text-wrap">@string.Join(",", Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberGroupSizes)</td>
+                        </tr>
+                        <tr>
+                            <th>IsNeutralCulture</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.IsNeutralCulture</td>
+                            <th>IetfLanguageTag</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.IetfLanguageTag</td>
+                        </tr>
+                        <tr>
+                            <th>CompareInfo Name</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.CompareInfo.Name</td>
+                            <th>CompareInfo Version</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.CompareInfo.Version.FullVersion</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo ANSICodePage</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TextInfo.ANSICodePage</td>
+                            <th>TextInfo EBCDICCodePage</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TextInfo.EBCDICCodePage</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo MacCodePage</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TextInfo.MacCodePage</td>
+                            <th>TextInfo OEMCodePage</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TextInfo.OEMCodePage</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo CultureName</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TextInfo.CultureName</td>
+                            <th>TextInfo IsRightToLeft</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft</td>
+                        </tr>
+                        <tr>
+                            <th>TextInfo ListSeparator</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TextInfo.ListSeparator</td>
+                            <th>TextInfo LCID</th>
+                            <td class="text-break text-wrap">@Thread.CurrentThread.CurrentUICulture.TextInfo.LCID</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
