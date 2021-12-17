@@ -1,4 +1,8 @@
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHealthChecks().AddCheck<AspNetOneRazor.AspNetOneRazorHealthCheck>("AspNetOneRazorHealthCheck");
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -12,6 +16,11 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.MapHealthChecks("healthz", new HealthCheckOptions
+{
+    AllowCachingResponses = false
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
