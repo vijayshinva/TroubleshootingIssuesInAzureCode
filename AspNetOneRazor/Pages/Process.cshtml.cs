@@ -6,10 +6,9 @@ namespace AspNetOneRazor.Pages
 {
     public class ProcessModel : PageModel
     {
-        public Process Process { get; set; }
+        public Process Process { get; } = Process.GetCurrentProcess();
         public void OnGet()
         {
-            Process = Process.GetCurrentProcess();
         }
     }
 }

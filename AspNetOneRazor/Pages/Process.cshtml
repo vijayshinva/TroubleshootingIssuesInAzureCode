@@ -222,7 +222,7 @@
                                 <td>@process.HandleCount</td>
                                 @try
                                 {
-                                    <td>@process.MainModule.FileName</td>
+                                    <td>@process.MainModule?.FileName</td>
                                 }
                                 catch (Exception)
                                 {
